@@ -11,7 +11,7 @@ podman login ghcr.io
 2. Build the image
 
 ```bash
-podman build -t ghcr.io/stevenuster/n8n:csv-latest .
+podman build --pull -t ghcr.io/stevenuster/n8n:csv-latest .
 ```
 
 3. Push the image
