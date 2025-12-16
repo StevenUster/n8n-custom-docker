@@ -11,12 +11,18 @@ podman login ghcr.io
 2. Build the image
 
 ```bash
-podman build --pull -t ghcr.io/stevenuster/n8n:csv-latest .
+VERSION=$(date +%Y%m%d%H%M)
+
+podman build --pull \
+  -t ghcr.io/stevenuster/n8n:csv-$VERSION \
+  -t ghcr.io/stevenuster/n8n:csv-latest \
+  .
 ```
 
 3. Push the image
 
 ```bash
+podman push ghcr.io/stevenuster/n8n:csv-$VERSION
 podman push ghcr.io/stevenuster/n8n:csv-latest
 ```
 
