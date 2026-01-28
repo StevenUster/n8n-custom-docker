@@ -2,8 +2,10 @@ FROM n8nio/n8n:latest
 
 USER root
 
-RUN npm install -g archiver archiver-zip-encrypted
-
-ENV NODE_FUNCTION_ALLOW_EXTERNAL=archiver,archiver-zip-encrypted
+WORKDIR /tmp
+RUN npm install archiver archiver-zip-encrypted
+RUN cp -rn /tmp/node_modules/* /usr/local/lib/node_modules/n8n/node_modules/ || true
+RUN rm -rf /tmp/node_modules
 
 USER node
+
