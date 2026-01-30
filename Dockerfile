@@ -1,11 +1,10 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:1.123.16
 
 USER root
 
-WORKDIR /tmp
-RUN npm install archiver archiver-zip-encrypted
-RUN cp -rn /tmp/node_modules/* /usr/local/lib/node_modules/n8n/node_modules/ || true
-RUN rm -rf /tmp/node_modules
+RUN npm install -g archiver archiver-zip-encrypted
+
+ENV NODE_FUNCTION_ALLOW_EXTERNAL=archiver,archiver-zip-encrypted
 
 USER node
 
